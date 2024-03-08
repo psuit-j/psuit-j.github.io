@@ -101,5 +101,5 @@ theme: butterfly
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git 
-  repo:https://github.com/psuit-j/psuit-j.github.io.git 
+  type: git
+  repo: https://github.com/psuit-j/psuit-j.github.io.git
