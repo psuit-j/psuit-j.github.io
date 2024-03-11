@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【面经】 项目启动注意 | 吴生胜有声</title><meta name="author" content="Psuit-J"><meta name="copyright" content="Psuit-J"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目启动注意服务器与服务器传输，当前在一台服务器，所有直接找到jenkens，cp拷贝即可，；若是不同的服务器，要用scp  配置源码：仓库，触发器：什么时候构建，构建环境：前端后端    构建后端环境时，需要传参  启动项目，可以不用进入jenkens  RBAC 权限控制  登录鉴权是我做的，但是基于RBAC这个权限控制不是我做的，（展开说权限管家的作用）  用户关联角色，角色关联用户   权">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【面经】 项目启动注意">
+<meta property="og:url" content="https://psuit-j.github.io/2024/03/10/%E3%80%90%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E3%80%91%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F/index.html">
+<meta property="og:site_name" content="吴生胜有声">
+<meta property="og:description" content="项目启动注意服务器与服务器传输，当前在一台服务器，所有直接找到jenkens，cp拷贝即可，；若是不同的服务器，要用scp  配置源码：仓库，触发器：什么时候构建，构建环境：前端后端    构建后端环境时，需要传参  启动项目，可以不用进入jenkens  RBAC 权限控制  登录鉴权是我做的，但是基于RBAC这个权限控制不是我做的，（展开说权限管家的作用）  用户关联角色，角色关联用户   权">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zenx-miniapp.oss-cn-beijing.aliyuncs.com/front/activity/21494299577800.jpg">
+<meta property="article:published_time" content="2024-03-10T06:47:37.000Z">
+<meta property="article:modified_time" content="2024-03-11T08:37:47.458Z">
+<meta property="article:author" content="Psuit-J">
+<meta property="article:tag" content="面经">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zenx-miniapp.oss-cn-beijing.aliyuncs.com/front/activity/21494299577800.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://psuit-j.github.io/2024/03/10/%E3%80%90%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E3%80%91%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":200,"languages":{"author":"作者: Psuit-J","link":"链接: ","source":"来源: 吴生胜有声","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【面经】 项目启动注意',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-11 16:37:47'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://zenx-miniapp.oss-cn-beijing.aliyuncs.com/front/activity/21494299577800.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-link"></i><span> 科普</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="吴生胜有声"><span class="site-name">吴生胜有声</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-link"></i><span> 科普</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【面经】 项目启动注意</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2024-03-10T06:47:37.000Z" title="发表于 2024-03-10 14:47:37">2024-03-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【面经】 项目启动注意"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="项目启动注意"><a href="#项目启动注意" class="headerlink" title="项目启动注意"></a>项目启动注意</h1><p><strong>服务器与服务器传输</strong>，当前在一台服务器，所有直接找到jenkens，cp拷贝即可，；若是不同的服务器，要用scp</p>
+<ul>
+<li>配置源码：仓库，触发器：什么时候构建，构建环境：前端后端</li>
+</ul>
+<hr>
+<ul>
+<li>构建后端环境时，需要传参</li>
+</ul>
+<p>启动项目，可以不用进入jenkens</p>
+<ul>
+<li><p>RBAC 权限控制</p>
+</li>
+<li><p><strong>登录鉴权是我做的，但是基于RBAC这个权限控制不是我做的，（展开说权限管家的作用）</strong></p>
+<ul>
+<li><p>用户关联角色，角色关联用户</p>
+</li>
+<li><pre><code> 权限管理系统是给公司使用，公司中有很多应用A,B,C,D
+</code></pre>
+</li>
+<li><p>这些应用都可以在这里进行管理，但是都是属于这个公司</p>
+</li>
+<li><p>这个组织股那里是被这些应用所共享</p>
+<p>组织结构对应某一家公司        </p>
+</li>
+<li><p>一级组织结构分区，二级组织架构</p>
+</li>
+</ul>
+</li>
+<li><p>权限管理</p>
+<ul>
+<li>先添加应用</li>
+</ul>
+</li>
+</ul>
+<h4 id="权限管家系统的功能"><a href="#权限管家系统的功能" class="headerlink" title="权限管家系统的功能"></a>权限管家系统的功能</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">做管理系统，登录功能需要模型支撑，登录后鉴权</span><br><span class="line">  鉴权的用户、角色、资源（菜单，用户可以做什么操作）控制模型，RBAC</span><br><span class="line">  基于RBAC的通用的权限管理系统，是我同事开发的，用来帮我维护菜单和权限，主要具备以下功能</span><br><span class="line">  1、首先提供了基础数据（用户、角色、菜单）的增删改查操作</span><br><span class="line">  2、对外提供服务【登录、查询角色，权限数据查询等等】</span><br><span class="line">  3、对外提供服务两种方式，我们同事提供了SDK，更简单：API[restful风格，基于http调用，提供各种服务，语言无关性，缺点 ： 要自己封装各种参数，自己处理响应结果]/SDK[针对不同语言进行封装的，调用服务的功能，java上提供jar包，语言不一样]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><em>首先，公司的子系统都会有的功能：认证（账号+密码，即用户登录）+登录后鉴权（控制用户能做什么 ，不同岗位不同角色不同操作不同功能）</em></p>
+<p>&#x3D;&#x3D;权限管家即 把这些公共代码抽取出来，系统要进行校验，则通过权限管家进行校验，怎么区分不同系统？&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;通过应用管理，创建应用，每一个应用都有不同的应用id，id和数据绑定&#x3D;&#x3D;</p>
+<p>我们系统访问权限管家，校验过后，它返回数据：成功或者失败（用户信息），是否有令牌</p>
+<p>过程 ： 系统携带用户名和密码给权限管家，它校验过后，会返回一个私钥加密令牌，系统拿到令牌后返回给前端，进行公钥解析，如果校验成功，则可以访问</p>
+<hr>
+<p><strong>权限管家在idea的使用</strong></p>
+<ul>
+<li>首先导入依赖，它是开源项目，导入com.em.auth依赖</li>
+<li>配置locla.yml文件，</li>
+<li><img src="day01.assets/image-20230611152912767.png" alt="image-20230611152912767" style="zoom:25%;" /></li>
+</ul>
+<p><strong>看是怎么具体使用的</strong></p>
+<ul>
+<li><p>如果我们要实现登录，无需自己再写登录，直接调用api即可</p>
+</li>
+<li><p>通过权限管家系统，可以进行用户信息，角色的增删改查看这个人可以做什么，不可以做什么。</p>
+</li>
+<li><p>接着和系统进行对接，怎么对接？</p>
+</li>
+<li><p>通过SDK，可以使用我们封装的模板对象API，获得对象authTemplate。</p>
+</li>
+<li><p>直接注入authTemplate，使用@Resourse</p>
+</li>
+<li><p>它里面提供各种方法：做登录，鉴权，查询用户角色，查询用户具备的菜单</p>
+</li>
+<li><p>但是前提是，必须首先登录，具备令牌之后才能访问</p>
+</li>
+</ul>
+<hr>
+<h4 id="在网关中进行鉴权"><a href="#在网关中进行鉴权" class="headerlink" title="在网关中进行鉴权"></a>在网关中进行鉴权</h4><p><em>认证和鉴权操作依赖权限管家，拿登录做例子，客户端拿到令牌，登陆成功之后，用户可以访问系统，但是每次访问要校验令牌，这里，用到拦截器或者过滤器，考虑到微服务，我们使用网关进行JWT令牌的校验</em></p>
+<p>**</p>
+<p><em>公钥私钥</em></p>
+<ul>
+<li>令牌加密算法分为对称（SH256，加密和解析校验一样，只要是相同字符串即可）和非对称（公钥私钥，世界范围内只有一对）</li>
+<li>权限管家生成的token令牌是基于私钥，但是在权限管家中配置了公钥和私钥，因为它也有校验令牌的需要，比如查询角色。。。。。</li>
+<li>网关对令牌进行校验解析的时候，必须使用公钥进行校验</li>
+</ul>
+<p><strong>看具体怎么使用</strong></p>
+<p><em>之前使用的是GlobelFilter</em></p>
+<p>过滤器流程</p>
+<ul>
+<li>首先自定义了一个AuthFilter接口</li>
+<li>当发请求过来，首先执行filte()方法，看是否该路径为放行路径</li>
+<li>其次校验JWT令牌</li>
+<li>继续校验，根据令牌信息（id）查询角色</li>
+<li>如果角色为没有权限的快递员等，则返回没有权限</li>
+</ul>
+<p><strong>idea代码具体实现</strong></p>
+<ul>
+<li><p>网关里的过滤器工厂</p>
+<ul>
+<li><blockquote>
+<p>比如说添加请求头这个操作，我们是配置在yml文件的id下的，</p>
+<ul>
+<li><strong>效果</strong>：当请求当问到该路由，就会被过滤器拦截</li>
+<li>实现：通过过滤器工厂AddRequestHeaderGatewayFilterFactory的apply方法实现<ul>
+<li>该方法不是执行过滤器的业务逻辑只是返回一个接口对象 —- GatewayFilter</li>
+<li>业务逻辑在GatewayFilter的filter方法中执行</li>
+</ul>
+</li>
+<li>注意：过滤器的名字要和工厂前半部分一致</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>如果自定义过滤器工厂应该怎么办？？？</p>
+<ul>
+<li><pre><code>写一个类，名字 ： XxxGatewayFilterFactory  继承  和网关继承一样&#123;
+  
+     apply&#123;
+
+     返回一个GatewayFilter接口的实现
+
+  &#125;
+
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 如何使用，在yml文件中，-Xxx</span><br><span class="line"></span><br><span class="line">  - &lt;img src=&quot;day01.assets/image-20230611163511059.png&quot; alt=&quot;image-20230611163511059&quot; style=&quot;zoom:25%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">-------------------</span><br><span class="line"></span><br><span class="line">### bug1：权限过滤器中，角色没有判断直接返回true，所以所有用户都可以登录</span><br><span class="line"></span><br><span class="line">- 在idea代码中，定义了四个过滤器工厂，分别校验不同用户端的令牌</span><br><span class="line"></span><br><span class="line">- 四个过滤器工厂用的都是同一个过滤器，TokenGatewayFilter</span><br><span class="line"></span><br><span class="line">- 逻辑虽然一样，但是其中业务逻辑不一样</span><br><span class="line"></span><br><span class="line">  - 校验令牌不同 ： 自定义了接口，里面方法check()， 提供了具体的实现类，由不同的工厂提供</span><br><span class="line"></span><br><span class="line">  - 鉴权不同 ： 方法auth()</span><br><span class="line"></span><br><span class="line">    - *判断逻辑 ： 只有指定的角色才能访问后台管理系统*</span><br><span class="line"></span><br><span class="line">    - 根据当前登录用户获取  用户的角色列表[]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+   Long userId = authUserInfoDTO.getUserId();
+   Result&lt;List&lt;Long&gt;&gt; resultRole = AuthTemplateFactory.get(token).opsForRole()
+                  .findRoleByUserId(userId);
+   List&lt;Long&gt; data = resultRole.getData();
+  //做一下判断
+  if(CollUtil.isEmpty(data))&#123;
+    reture false;
+  &#125;
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 获取系统配置中允许访问的角色列表[4个]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  该角色已经通过yml配置，我们可以通过@value拿到，亦可以写配置类拿到，这里演示第二种
+    @Data
+  @Component
+  @ConfigurationProperties(prefix = &quot;role&quot;)
+  public class ReloConfig &#123;
+  
+      private List&lt;Long&gt; manager;
+      private  List&lt;Long&gt; courier;
+      private  List&lt;Long&gt; driver;
+  &#125;
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+  List&lt;Long&gt; manager = reloConfig.getManager();
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 看是否被包含，或者求交集</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  Collection&lt;Long&gt; intersection = CollUtil.intersection(data, manager);
+         
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 是否为空,不为空，有权限，登录成功</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  return CollUtil.isNotEmpty(intersection);
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---------------------</span><br><span class="line"></span><br><span class="line">**如何做测试**</span><br><span class="line"></span><br><span class="line">- 本地测试 ： 本地运行 ---- 改地址即可 </span><br><span class="line"></span><br><span class="line">  - 当前网关有两个 ： 本地idea修改的，虚拟机中部署的 ，我们只需要改变nginx中网关地址为本地即可</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+-* nginx里面网关的默认地址为127.0.0.1 ： 这里配置的是本地，由于nginx和nacos目前配置在一台电脑上，所以就会找虚拟机容器里（192.168.150.101）的东西,这里面的代码是老代码
+  
+-* 我们自己写的东西，地址可以通过虚拟机的网卡获得，vm8的网卡为 192.168.150.1，所以只需要访问网卡，就可以通过虚拟机找到我们windows这台电脑，其次找到本地资源
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>在线测试 ：把代码推送致远程仓库，用jekens重新部署</p>
+<ul>
+<li>提交代码  ： 选中gateway ， 进行commit</li>
+<li>在jekens中手动构建gateway，线上环境运行最新代码</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>项目中遇到问题怎么办</p>
+<ul>
+<li>有些问题我一眼就能看到是什么问题，我就在本地复现</li>
+<li>有些无法一眼看出，就查看日志</li>
+</ul>
+<hr>
+<p><strong>后台管理系统的流程</strong></p>
+<p>1、用户点击登录</p>
+<p>2、经过网关，访问后台，本来要在后台进行操作</p>
+<p>3、现在远程调用权限管家即可，它返回用户信息和令牌</p>
+<p>4、登录后会存储令牌，登录后操作会在网关校验令牌</p>
+<p>5、网关校验细节，四个步骤，简单说明</p>
+<p>6、网关第四步骤可以详细说明，鉴权，怎么鉴权，鉴什么权</p>
+<p><img src="/day01.assets/image-20230612100941714.png" alt="image-20230612100941714"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/psuit-j">Psuit-J</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://psuit-j.github.io/2024/03/10/%E3%80%90%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E3%80%91%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F/">https://psuit-j.github.io/2024/03/10/%E3%80%90%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E3%80%91%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://psuit-j.github.io" target="_blank">吴生胜有声</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a></div><div class="post_share"><div class="social-share" data-image="https://zenx-miniapp.oss-cn-beijing.aliyuncs.com/front/activity/21494299577800.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/07/my-first-github-blog/" title="my first github blog"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">my first github blog</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/10/%E3%80%90%E7%BB%84%E4%BB%B6%E3%80%91%E5%BC%82%E6%AD%A5%E6%97%A5%E5%BF%97%E7%99%BB%E5%BD%95/" title="【面经】 异步日志登录"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【面经】 异步日志登录</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/03/10/%E3%80%90%E7%BB%84%E4%BB%B6%E3%80%91%E5%BC%82%E6%AD%A5%E6%97%A5%E5%BF%97%E7%99%BB%E5%BD%95/" title="【面经】 异步日志登录"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-10</div><div class="title">【面经】 异步日志登录</div></div></a></div><div><a href="/2024/03/11/%E3%80%90%E9%9D%A2%E7%BB%8F%E3%80%91%20Spring&&Spring%20Boot/" title="【面经】 Spring&amp;&amp;Spring Boot"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-11</div><div class="title">【面经】 Spring&amp;&amp;Spring Boot</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://zenx-miniapp.oss-cn-beijing.aliyuncs.com/front/activity/21494299577800.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Psuit-J</div><div class="author-info__description">Don‘t be sad and do your own thing quietly</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/psuit-j" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F"><span class="toc-number">1.</span> <span class="toc-text">项目启动注意</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E5%AE%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">权限管家系统的功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E7%BD%91%E5%85%B3%E4%B8%AD%E8%BF%9B%E8%A1%8C%E9%89%B4%E6%9D%83"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">在网关中进行鉴权</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/11/%E3%80%90mysql%E3%80%91collection%E6%A0%87%E7%AD%BE%E5%A4%9A%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2/" title="【mysql】 collection标签多条件查询">【mysql】 collection标签多条件查询</a><time datetime="2024-03-11T08:30:37.000Z" title="发表于 2024-03-11 16:30:37">2024-03-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/11/%E3%80%90redis%E3%80%91Redis%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84/" title="【redis】 Redis主从架构">【redis】 Redis主从架构</a><time datetime="2024-03-11T08:30:37.000Z" title="发表于 2024-03-11 16:30:37">2024-03-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/11/%E3%80%90redis%E3%80%91redis%E6%8C%81%E4%B9%85%E5%8C%96/" title="【redis】 redis持久化">【redis】 redis持久化</a><time datetime="2024-03-11T08:30:37.000Z" title="发表于 2024-03-11 16:30:37">2024-03-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/11/%E3%80%90token%E3%80%91%20%E5%8F%8Ctoken%E4%B8%89%E9%AA%8C%E8%AF%81/" title="【token】 双token三验证">【token】 双token三验证</a><time datetime="2024-03-11T08:30:37.000Z" title="发表于 2024-03-11 16:30:37">2024-03-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/11/%E3%80%90%E4%BA%8B%E5%8A%A1%E3%80%91%20%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" title="【事务】 分布式事务">【事务】 分布式事务</a><time datetime="2024-03-11T08:30:37.000Z" title="发表于 2024-03-11 16:30:37">2024-03-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Psuit-J</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi,  welcome  to  my  <a target="_blank" rel="noopener" href="https://butterfly.js.org/">  blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
